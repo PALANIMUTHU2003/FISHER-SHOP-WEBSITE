@@ -1,0 +1,294 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Oasis Pizza - Menu</title>
+        <style>
+            /* General styles */
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+
+            /* Header styles */
+            header {
+                background-color: #4B6F44;
+                color: white;
+                padding: 1em 0;
+                text-align: center;
+            }
+
+            header nav {
+                display: flex;
+                gap: 20px;
+            }
+
+            header nav a {
+                color: white;
+                text-decoration: none;
+                font-size: 16px;
+            }
+
+            h1 {
+                margin-top: 20px;
+                text-align: center;
+            }
+
+            .menu-container {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: auto auto;
+                gap: 20px;
+                padding: 20px;
+                max-width: 1000px;
+                text-align: center;
+                margin: 0 auto; /* Center the menu container */
+            }
+
+            .FISH-item img {
+    width: 100%; /* Ensure the image takes full width of its container */
+    height: 200px; /* Set a fixed height for consistency */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+    border-radius: 10px; /* Rounded corners */
+}
+
+
+            .pizza-item img {
+                width: 100%;
+                height: auto;
+                border-radius: 10px;
+            }
+
+            .quantity-controls {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 10px;
+            }
+
+            .quantity-controls button {
+                background-color: #4B6F44;
+                color: white;
+                border: none;
+                padding: 5px 10px;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            .quantity-controls button:hover {
+                background-color: #4B6F44;
+            }
+
+            .quantity-display {
+                margin: 0 10px;
+                font-size: 18px;
+            }
+
+            button.add-to-cart {
+                background-color: #4B6F44;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                cursor: pointer;
+                margin-top: 10px;
+                border-radius: 5px;
+            }
+
+            button.add-to-cart:hover {
+                background-color: #4B6F44;
+            }
+
+            .go-to-cart {
+                margin-top: 20px;
+                text-align: center;
+            }
+
+            .go-to-cart button {
+                background-color: #4B6F44;
+                color: white;
+                font-size: 18px;
+                padding: 15px 30px;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            .go-to-cart button:hover {
+                background-color: #3a5333;
+            }
+
+            .back-to-home {
+                margin-top: 10px;
+                text-align: center;
+            }
+
+            .back-to-home button {
+                background-color: #333;
+                color: white;
+                font-size: 18px;
+                padding: 15px 30px;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            .back-to-home button:hover {
+                background-color: #555;
+            }
+
+            /* Specific grid placements */
+            .pizza-item:nth-child(1) {
+                grid-column: 1;
+                grid-row: 1;
+            }
+            .pizza-item:nth-child(2) {
+                grid-column: 2;
+                grid-row: 1;
+            }
+            .pizza-item:nth-child(3) {
+                grid-column: 3;
+                grid-row: 1;
+            }
+            .pizza-item:nth-child(4) {
+                grid-column: 1 / 2; /* In the left corner */
+                grid-row: 2;
+                justify-self: start;
+            }
+            .pizza-item:nth-child(5) {
+                grid-column: 2 / 3; /* In the center */
+                grid-row: 2;
+                justify-self: center;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="menu.html">Menu</a>
+                <a href="locations.html">Locations</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="signin.html">Sign In</a>
+            </nav>
+        </header>
+
+        <h1>FISHERY SHOP MENU</h1>
+        
+        <div class="menu-container">
+            <div class="FISH-item">
+                <img src="https://www.freshma.in/s3-backup/media/2022/06/17/image_untitled-design---2022-06-17t125650.645.jpg" alt="INDI TANDOORI PANEER">
+                <h2>Lobsters</h2>
+                <p><strong>Rs.529</strong></p>
+                <div class="quantity-controls">
+                    <button onclick="updateQuantity('LOBSTERS', -1)">-</button>
+                    <span class="quantity-display" id="quantity-LOBSTERS">0</span>
+                    <button onclick="updateQuantity('LOBSTERS', 1)">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart('LOBSTERS', 529)">Add to Cart</button>
+            </div>
+            <div class="FISH-item">
+                <img src="https://www.freshma.in/s3-backup/media/2022/06/17/image_untitled-design---2022-06-17t123818.411.jpg" alt="Slices">
+                <h2>Slices</h2>
+                <p><strong>Rs.149</strong></p>
+                
+                <div class="quantity-controls">
+                    <button onclick="updateQuantity('Slices', -1)">-</button>
+                    <span class="quantity-display" id="quantity-Slices">0</span>
+                    <button onclick="updateQuantity('Slices', 1)">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart('Slices', 149)">Add to Cart</button>
+            </div>
+            <div class="FISH-item">
+                <img src="https://www.freshma.in/s3-backup/media/2022/06/17/image_untitled-design---2022-06-17t114835.411.jpg" alt="Fresh Water Fish">
+                <h2>Fresh Water Fish</h2>
+                <p><strong>Rs.169</strong></p>
+                <div class="quantity-controls">
+                    <button onclick="updateQuantity('Fresh Water Fish', -1)">-</button>
+                    <span class="quantity-display" id="quantity-Fresh Water Fish">0</span>
+                    <button onclick="updateQuantity('Fresh Water Fish', 1)">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart('Fresh Water Fish', 169)">Add to Cart</button>
+            </div>
+            <div class="FISH-item">
+                <img src="https://www.freshma.in/s3-backup/media/2022/06/17/image_untitled-design---2022-06-17t120113.528.jpg" alt="Crabs">
+                <h2>Crabs</h2>
+                <p><strong>Rs.239</strong></p>
+                <br>
+                <div class="quantity-controls">
+                    <button onclick="updateQuantity('Crabs', -1)">-</button>
+                    <span class="quantity-display" id="quantity-Crabs">0</span>
+                    <button onclick="updateQuantity('Crabs', 1)">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart('Crabs', 239)">Add to Cart</button>
+            </div>
+            <div class="FISH-item">
+                <img src="https://www.freshma.in/s3-backup/media/2022/06/17/image_untitled-design---2022-06-17t122533.636.jpg" alt="Combos">
+                <h2>Combos</h2>
+                <p><strong>Rs.499</strong></p>
+                <br>
+                
+                <div class="quantity-controls">
+                    <button onclick="updateQuantity('Combos', -1)">-</button>
+                    <span class="quantity-display" id="quantity-Combos">0</span>
+                    <button onclick="updateQuantity('Combos', 1)">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart('Combos',499)">Add to Cart</button>
+            </div>
+            <div class="FISH-item">
+                <img src="https://www.freshma.in/s3-backup/media/2022/06/17/image_untitled-design---2022-06-17t115535.606.jpg" alt="Prawns">
+                <h2>Prawns</h2>
+                 <p><strong>Rs.579</strong></p>
+                <br>
+                <div class="quantity-controls">
+                    <button onclick="updateQuantity('Prawns', -1)">-</button>
+                    <span class="quantity-display" id="quantity-Prawns">0</span>
+                    <button onclick="updateQuantity('Prawns', 1)">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart('Prawns', 579)">Add to Cart</button>
+            </div>
+        </div>
+
+
+        <div class="go-to-cart">
+            <a href="cart.html"><button>Go to Cart</button></a>
+        </div>
+
+        <div class="back-to-home">
+            <a href="index.html"><button>Back to Home</button></a>
+        </div>
+
+        <script>
+            function updateQuantity(itemName, change) {
+                const quantityDisplay = document.getElementById(`quantity-${itemName}`);
+                let currentQuantity = parseInt(quantityDisplay.textContent);
+                currentQuantity = Math.max(0, currentQuantity + change); // Ensure quantity doesn't go below 0
+                quantityDisplay.textContent = currentQuantity;
+            }
+
+            function addToCart(itemName, price) {
+                const quantityDisplay = document.getElementById(`quantity-${itemName}`);
+                const quantity = parseInt(quantityDisplay.textContent);
+                if (quantity > 0) {
+                    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        // Check if the item already exists in the cart
+                    const existingItemIndex = cart.findIndex(item => item.name === itemName);
+                if (existingItemIndex !== -1) {
+            // If the item already exists, update its quantity
+                    cart[existingItemIndex].quantity += quantity;
+                } else {
+            // If the item is new, add it to the cart
+                    cart.push({ name: itemName, price: price, quantity: quantity });
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(`Added ${quantity} ${itemName}(s) to cart at ${price} each!`);
+    } else {
+        alert(`Please select quantity for ${itemName}`);
+    }
+}
+
+            
+        </script>
+    </body>
+    </html>
